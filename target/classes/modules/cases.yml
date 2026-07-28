@@ -1,0 +1,9 @@
+# CoreDSC module: cases
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+staff-role-ids: []
+appeals:
+  parent-channel-id: ''
+  private-thread: true
+  message-min-length: 10
+  message-max-length: 1500

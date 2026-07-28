@@ -1,0 +1,8 @@
+#ignore this line
+license: ''
+#ignore this line
+
+metrics:
+  # Restart Paper after changing this value.
+  enabled: true
+
