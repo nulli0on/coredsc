@@ -1,0 +1,9 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+# Shared CoreDSC messages. Module-specific messages stay in the module files.
+prefix: "&8[&bCoreDSC&8] "
+no-permission: "%prefix%&cYou do not have permission."
+player-only: "%prefix%&cOnly players can use this command."
+reload-success: "%prefix%&aCoreDSC configuration reloaded."
+reload-failed: "%prefix%&cReload failed; the previous valid configuration is still active."
