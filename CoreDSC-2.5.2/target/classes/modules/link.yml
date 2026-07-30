@@ -1,0 +1,22 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+# CoreDSC module: link
+# Set enabled to false to keep this module completely inactive.
+enabled: true
+code-expiry-seconds: 300
+browser-url: ''
+code-length: 8
+security:
+  require-discord-server-membership: false
+  minimum-discord-account-age-days: 0
+  required-discord-role-id: ''
+  maximum-links-per-ip-per-day: 0
+required:
+  enabled: false
+  grace-period-seconds: 300
+  reminder-interval-seconds: 60
+  bypass-permission: coredsc.link.bypass
+  message: '&cYou must link your Discord account. Use &e/link&c. Grace remaining: &e%seconds%s'
+  allowed-commands:
+    - link

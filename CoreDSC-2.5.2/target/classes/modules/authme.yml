@@ -1,0 +1,10 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+# CoreDSC module: authme
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+reset-cooldown-hours: 24
+only-when-player-offline: true
+temporary-password-length: 12
+audit-log: true

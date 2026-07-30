@@ -1,0 +1,25 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+# CoreDSC module: status-channels
+# Set enabled to false to keep this module completely inactive.
+enabled: true
+
+# Discord limits channel renames heavily. CoreDSC enforces a minimum of 300 seconds.
+update-interval-seconds: 600
+unique-player-refresh-seconds: 3600
+
+# Maximum time to wait for offline renames during a clean shutdown.
+shutdown-wait-seconds: 3
+
+default-offline-name: 'server is offline'
+
+channels:
+- id: ''
+  type: voice
+  online-name: 'Players Online: %online_players%/%max_players%'
+  offline-name: 'server is offline'
+
+# Available placeholders:
+# %online_players%, %max_players%, %tps%, %server_status%, %server_version%,
+# %uptime%, %ram_used%, %ram_max%, %world_count%, %unique_players%

@@ -1,0 +1,11 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+# CoreDSC module: delivery-queue
+# Set enabled to false to keep this module completely inactive.
+enabled: true
+flush-interval-seconds: 15
+batch-size: 20
+max-attempts: 12
+maximum-pending: 5000
+maximum-backoff-seconds: 3600

@@ -1,0 +1,8 @@
+config-version: 4
+generated-by-version: "2.5.2"
+
+bstats:
+# bStats Anonymous Metrics
+# Enabling this feature helps us at improving CoreDSC for everyone.
+  enabled: true
+  feature-activity: true
