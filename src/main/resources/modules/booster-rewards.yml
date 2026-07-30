@@ -1,8 +1,0 @@
-# Persistent rewards for linked Discord server boosters.
-enabled: false
-guild-id: '' # falls back to discord.guild-id
-booster-role-id: ''
-reward-period-days: 30
-reconcile-interval-ticks: 72000
-commands:
-  - 'eco give %player% 1000'
