@@ -6,14 +6,14 @@ import org.bukkit.entity.Entity;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
-/**
- * CoreDSC scheduling boundary.
- *
- * <p>The current implementation targets Paper's global scheduler. Keeping all
- * scheduling behind this interface prevents new code from spreading direct
- * scheduler assumptions and provides one replacement point for future Folia
- * support.</p>
- */
+ 
+                               
+  
+                                                                              
+                                                                           
+                                                                            
+               
+   
 public interface CoreScheduler {
     boolean isGlobalThread();
 

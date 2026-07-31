@@ -8,14 +8,14 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/**
- * Persists reward command progress with an explicit in-flight marker.
- *
- * <p>Generic Bukkit console commands cannot participate in the SQLite
- * transaction. CoreDSC therefore chooses safety over automatic retries:
- * an interrupted or ambiguous in-flight command is never run again
- * automatically and remains available for manual review.</p>
- */
+ 
+                                                                      
+  
+                                                                      
+                                                                        
+                                                                   
+                                                             
+   
 public final class RewardClaimRepository {
     public record Claim(
             String claimKey,
@@ -77,7 +77,7 @@ public final class RewardClaimRepository {
         return storage.execute(connection -> Optional.ofNullable(select(connection, claimKey)));
     }
 
-    /** Returns only commands known not to have entered dispatch. */
+                                                                  
     public CompletableFuture<List<Claim>> findResumable(String rewardType, int limit) {
         return storage.execute(connection -> {
             List<Claim> claims = new ArrayList<>();
@@ -95,7 +95,7 @@ public final class RewardClaimRepository {
         });
     }
 
-    /** Returns counts for manual-review and interrupted in-flight claims. */
+                                                                           
     public CompletableFuture<long[]> reviewCounts() {
         return storage.execute(connection -> {
             try (PreparedStatement statement = connection.prepareStatement(
@@ -111,7 +111,7 @@ public final class RewardClaimRepository {
         });
     }
 
-    /** Marks a step before Bukkit command dispatch. */
+                                                     
     public CompletableFuture<Boolean> beginStep(String claimKey, int expectedStep, long now) {
         return storage.execute(connection -> {
             try (PreparedStatement statement = connection.prepareStatement(
@@ -126,7 +126,7 @@ public final class RewardClaimRepository {
         });
     }
 
-    /** Completes the exact step which was marked in-flight. */
+                                                             
     public CompletableFuture<Boolean> completeStep(String claimKey, int expectedStep, long now) {
         return storage.execute(connection -> {
             try (PreparedStatement statement = connection.prepareStatement(
@@ -146,7 +146,7 @@ public final class RewardClaimRepository {
         });
     }
 
-    /** Stops automatic execution because the dispatch result is ambiguous or unsafe. */
+                                                                                      
     public CompletableFuture<Void> manualReview(String claimKey, String error, long now) {
         String safe = sanitize(error);
         return storage.execute(connection -> {

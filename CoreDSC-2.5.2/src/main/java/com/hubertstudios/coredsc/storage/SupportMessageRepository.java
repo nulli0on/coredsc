@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-/** Persistent two-way ticket/report messages and offline Minecraft delivery. */
+                                                                              
 public final class SupportMessageRepository {
     public record SupportMessage(
             long id,

@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.concurrent.CompletableFuture;
 
-/** Privacy-preserving hashed IP link-attempt limiter. */
+                                                       
 public final class LinkSecurityRepository {
     private final SQLiteStorage storage;
     public LinkSecurityRepository(SQLiteStorage storage) { this.storage = storage; }

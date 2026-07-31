@@ -33,11 +33,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-/**
- * Generic moderation audit bridge. It integrates with command-driven moderation
- * plugins through configurable regular expressions instead of unsafe hardcoded
- * reflection against every plugin implementation.
- */
+ 
+                                                                                
+                                                                               
+                                                  
+   
 public final class ModerationBridgeModule implements CoreModule, ModerationAuditService {
     private final CoreDSCPlugin plugin;
     private volatile List<CommandRule> rules = List.of();
@@ -136,7 +136,7 @@ public final class ModerationBridgeModule implements CoreModule, ModerationAudit
         return rules.size() + " command rule(s)";
     }
 
-    /** Public adapter entry point for direct moderation integrations. */
+                                                                       
     @Override
     public void report(ModerationAction action) {
         if (action == null) return;

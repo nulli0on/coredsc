@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Moderation cases and linked appeals. */
+                                         
 public final class CaseRepository {
     public record ModerationCase(
             long id, String action, String targetUuid, String targetName, String executor,

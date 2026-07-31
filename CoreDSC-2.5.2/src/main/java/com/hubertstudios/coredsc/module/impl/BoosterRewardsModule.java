@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-/** Grants persistent rewards to linked Discord server boosters. */
+                                                                 
 public final class BoosterRewardsModule implements CoreModule, Listener {
     private final CoreDSCPlugin plugin;
     private final AtomicLong lastWarning = new AtomicLong();
@@ -197,8 +197,8 @@ public final class BoosterRewardsModule implements CoreModule, Listener {
                     ? pair.state().orElseThrow().boostedAt()
                     : observedBoostedAt;
             long period = Math.max(0L, (now - boostedAt) / periodMillis);
-            // A new boost cycle starts its own reward sequence. Reusing the old
-            // period counter would incorrectly suppress the first new-cycle rewards.
+                                                                              
+                                                                                   
             long rewarded = continuingCycle
                     ? pair.state().orElseThrow().lastRewardPeriod()
                     : -1L;

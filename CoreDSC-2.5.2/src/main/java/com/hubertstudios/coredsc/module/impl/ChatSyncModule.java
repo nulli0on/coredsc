@@ -41,10 +41,10 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-/**
- * Bidirectional Minecraft/Discord chat bridge with account-aware reverse chat
- * and optional per-player Discord webhooks.
- */
+ 
+                                                                              
+                                            
+   
 public final class ChatSyncModule implements CoreModule {
     private static final Pattern EVERYONE_MENTION = Pattern.compile("@everyone", Pattern.CASE_INSENSITIVE);
     private static final Pattern HERE_MENTION = Pattern.compile("@here", Pattern.CASE_INSENSITIVE);
@@ -439,8 +439,8 @@ public final class ChatSyncModule implements CoreModule {
                 }
                 action.queue(ignored -> plugin.recordFeatureUse("chat_mc_to_discord"), sendError -> {
                     webhookFuture = null;
-                    // The request may have reached Discord before the callback failed.
-                    // Retrying through the normal bot here could duplicate player chat.
+                                                                                     
+                                                                                      
                     warnRateLimited("Webhook send failed after submission; bot fallback was not used "
                             + "to avoid a possible duplicate: " + rootMessage(sendError));
                 });
@@ -667,7 +667,7 @@ public final class ChatSyncModule implements CoreModule {
                     values.add(parsed);
                 }
             } catch (NumberFormatException ignored) {
-                // Config validation and doctor output identify invalid IDs separately.
+                                                                                     
             }
         }
         return Set.copyOf(values);

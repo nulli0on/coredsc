@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
-/** One persistent, optional CPython process speaking a JSON-lines protocol. */
+                                                                             
 public final class PythonWorker {
     private static final Snapshot EMPTY_SNAPSHOT = new Snapshot(List.of(), Set.of(), List.of());
 
@@ -137,7 +137,7 @@ public final class PythonWorker {
         try {
             sendRaw(Map.of("type", "shutdown"));
         } catch (RuntimeException ignored) {
-            // The process may already be gone.
+                                             
         }
         current.destroy();
         return current.onExit().orTimeout(shutdownTimeoutSeconds, TimeUnit.SECONDS)
@@ -273,7 +273,7 @@ public final class PythonWorker {
                     if (emitted++ < 200) plugin.getLogger().warning("[Python] " + line);
                 }
             } catch (IOException ignored) {
-                // Process exit closes the stream.
+                                                
             }
         });
     }

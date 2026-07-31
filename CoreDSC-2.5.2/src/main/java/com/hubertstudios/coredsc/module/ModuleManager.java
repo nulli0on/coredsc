@@ -34,7 +34,7 @@ import java.util.Map;
 import java.time.Instant;
 import java.util.logging.Level;
 
-/** Coordinates module lifecycle and records explicit module health states. */
+                                                                            
 public final class ModuleManager {
 
     public enum ModuleState {
@@ -215,11 +215,11 @@ public final class ModuleManager {
                 .anyMatch(status -> status.state() == ModuleState.FAILED);
     }
 
-    /**
-     * Fails the surrounding lifecycle operation when any configured module did
-     * not come back successfully. Normal startup may intentionally tolerate an
-     * optional module failure; transactional reload/rollback may not.
-     */
+     
+                                                                               
+                                                                               
+                                                                      
+       
     public synchronized void requireNoFailedModules(String operation) {
         if (!hasFailedModules()) {
             return;
@@ -243,11 +243,11 @@ public final class ModuleManager {
         return List.copyOf(enabledModules.keySet());
     }
 
-    /**
-     * Verifies that every module which was working before a rollback was
-     * successfully restored. Modules that were already failed before the
-     * reload do not turn a successful rollback into a new fatal state.
-     */
+     
+                                                                         
+                                                                         
+                                                                       
+       
     public synchronized void requirePreviouslyEnabledModules(
             List<String> previouslyEnabled,
             String operation

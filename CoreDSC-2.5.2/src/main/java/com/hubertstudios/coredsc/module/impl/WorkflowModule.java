@@ -34,7 +34,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
-/** Config-driven cross-platform automation engine. */
+                                                    
 public final class WorkflowModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private final List<Workflow> workflows = new ArrayList<>();

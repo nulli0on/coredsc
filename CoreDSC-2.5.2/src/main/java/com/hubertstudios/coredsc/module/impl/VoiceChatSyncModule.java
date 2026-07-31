@@ -49,15 +49,15 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Position-based Discord proximity rooms. Linked Discord users are moved
- * between temporary channels according to Minecraft proximity.
- *
- * <p>The historical Discord/Simple Voice Chat relay implementation remains
- * isolated behind the relay-pool abstraction, but CoreDSC 2.5.2 does not
- * construct it because this source release does not bundle a verified DAVE
- * provider and its platform-native runtime.</p>
- */
+ 
+                                                                         
+                                                               
+  
+                                                                           
+                                                                         
+                                                                           
+                                                
+   
 public final class VoiceChatSyncModule extends ListenerAdapter
         implements CoreModule, Listener, VoiceBridgeTransport.Endpoint {
 
@@ -290,7 +290,7 @@ public final class VoiceChatSyncModule extends ListenerAdapter
         if (room == null || !shouldBridgeMinecraftMicrophone(room, minecraftPlayerId)) {
             return false;
         }
-        // Retained for a future verified DAVE-enabled relay implementation.
+                                                                          
         return pool.isConnected(roomId)
                 || (createSoloRoomOnSpeech && room.minecraftPlayers.size() == 1);
     }

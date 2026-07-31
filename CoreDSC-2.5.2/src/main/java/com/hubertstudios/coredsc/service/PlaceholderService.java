@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
-/** Optional, reflection-based PlaceholderAPI integration. */
+                                                           
 public final class PlaceholderService {
     private final CoreDSCPlugin plugin;
     private final boolean available;

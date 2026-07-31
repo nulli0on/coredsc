@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-/** Persists forced-link grace and reminder timestamps across restarts. */
+                                                                        
 public final class LinkEnforcementRepository {
     public record State(long firstSeenAt, long lastReminderAt) { }
 

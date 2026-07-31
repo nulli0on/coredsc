@@ -24,16 +24,16 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.LongAdder;
 
-/**
- * Official bStats integration for aggregate, privacy-safe adoption metrics.
- *
- * <p>No custom endpoint exists. Per-plugin settings live in {@code telemetry.yml};
- * the server-wide bStats opt-out remains authoritative.</p>
- *
- * <p>All Bukkit/config access happens while a snapshot is built on the server
- * thread. bStats chart callbacks only read the immutable snapshot, because the
- * bStats scheduler can request chart values asynchronously.</p>
- */
+ 
+                                                                            
+  
+                                                                                   
+                                                            
+  
+                                                                              
+                                                                               
+                                                                
+   
 public final class MetricsService {
     public enum State {
         DISABLED,
@@ -41,7 +41,7 @@ public final class MetricsService {
         FAILED
     }
 
-    /** CoreDSC's registered Bukkit plugin ID on bStats. */
+                                                         
     public static final int BSTATS_PLUGIN_ID = 32949;
 
     private static final List<String> MODULE_IDS = List.of(
@@ -111,10 +111,10 @@ public final class MetricsService {
         }
     }
 
-    /**
-     * Refreshes all chart values after CoreDSC configuration/modules change.
-     * The actual snapshot construction is always marshalled to the server thread.
-     */
+     
+                                                                             
+                                                                                  
+       
     public void refreshSnapshot() {
         if (state == State.DISABLED || !plugin.isEnabled()) {
             return;
@@ -126,13 +126,13 @@ public final class MetricsService {
         }
     }
 
-    /**
-     * Re-reads telemetry.yml during /coredsc reload. Enabling metrics after a
-     * disabled startup is supported. The official bStats client has no safe
-     * per-plugin shutdown hook, so disabling an already-running client takes
-     * full effect after the next server restart; feature counters stop
-     * immediately and the status text states that boundary explicitly.
-     */
+     
+                                                                              
+                                                                            
+                                                                             
+                                                                       
+                                                                       
+       
     public void reloadConfiguration() {
         File file = new File(plugin.getDataFolder(), "telemetry.yml");
         try {
@@ -167,10 +167,10 @@ public final class MetricsService {
     }
 
     public void stop() {
-        // The official bStats client binds its scheduler to the Bukkit plugin
-        // lifecycle and intentionally exposes no per-plugin shutdown method.
-        // Stop accepting/counting feature activity immediately so module teardown
-        // cannot accumulate data after the plugin has begun disabling.
+                                                                            
+                                                                           
+                                                                                
+                                                                     
         featureActivityEnabled = false;
         featureActivity.clear();
         metrics = null;
@@ -335,7 +335,7 @@ public final class MetricsService {
         target.addCustomChart(new SimpleBarChart("feature_activity", this::drainFeatureActivity));
     }
 
-    /** Records one bounded, anonymous feature-use event for the next bStats submission. */
+                                                                                         
     public void recordFeatureUse(String feature) {
         if (!featureActivityEnabled || feature == null || !FEATURE_ACTIVITY_KEYS.contains(feature)) {
             return;

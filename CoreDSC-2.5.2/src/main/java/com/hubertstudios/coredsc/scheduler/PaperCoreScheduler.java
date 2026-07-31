@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 
-/** Paper implementation of the CoreDSC scheduler boundary. */
+                                                            
 public final class PaperCoreScheduler implements CoreScheduler {
     private final JavaPlugin plugin;
     private final AtomicBoolean closed = new AtomicBoolean();
@@ -87,8 +87,8 @@ public final class PaperCoreScheduler implements CoreScheduler {
     public CoreTask runForEntity(Entity entity, Runnable task) {
         Objects.requireNonNull(entity, "entity");
         Objects.requireNonNull(task, "task");
-        // Paper has one global tick thread. A Folia implementation will route
-        // this method through the entity scheduler instead.
+                                                                            
+                                                          
         if (Bukkit.isPrimaryThread()) {
             ensureOpen();
             task.run();
@@ -101,8 +101,8 @@ public final class PaperCoreScheduler implements CoreScheduler {
     public CoreTask runAtLocation(Location location, Runnable task) {
         Objects.requireNonNull(location, "location");
         Objects.requireNonNull(task, "task");
-        // Paper has one global tick thread. A Folia implementation will route
-        // this method through the region scheduler instead.
+                                                                            
+                                                          
         if (Bukkit.isPrimaryThread()) {
             ensureOpen();
             task.run();

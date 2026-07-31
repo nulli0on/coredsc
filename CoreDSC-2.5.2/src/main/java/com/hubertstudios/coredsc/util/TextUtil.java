@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-/** Shared text safety and template helpers. */
+                                             
 public final class TextUtil {
     private static final Pattern EVERYONE = Pattern.compile("@everyone", Pattern.CASE_INSENSITIVE);
     private static final Pattern HERE = Pattern.compile("@here", Pattern.CASE_INSENSITIVE);
@@ -86,11 +86,11 @@ public final class TextUtil {
     }
 
 
-    /**
-     * Renders a command template using only explicitly supplied, prevalidated
-     * values. Any unknown placeholder is rejected instead of being forwarded
-     * to Bukkit or another plugin.
-     */
+     
+                                                                              
+                                                                             
+                                   
+       
     public static String renderRestrictedCommand(
             String template,
             Map<String, String> safeValues

@@ -40,7 +40,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
-/** Synchronises selected LuckPerms groups with configured Discord roles. */
+                                                                          
 public final class LuckPermsSyncModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private volatile List<RoleMapping> mappings = List.of();
@@ -180,7 +180,7 @@ public final class LuckPermsSyncModule implements CoreModule {
         return mappings.size() + " role mapping(s)";
     }
 
-    /** Called by the link module after an account has been linked. */
+                                                                    
     public void syncAfterLink(LinkedAccount account) {
         if (account == null) {
             return;
@@ -247,7 +247,7 @@ public final class LuckPermsSyncModule implements CoreModule {
         }
     }
 
-    /** Called by the link module before/after an account is removed. */
+                                                                      
     public void handleUnlink(LinkedAccount account) {
         if (account == null) {
             return;

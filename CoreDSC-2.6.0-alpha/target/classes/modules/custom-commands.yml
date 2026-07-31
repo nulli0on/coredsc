@@ -1,0 +1,64 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# CoreDSC module: custom-commands
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+server-address: play.example.com
+allow-console-actions: false
+console-command-allow-prefixes:
+- 'whitelist add '
+- 'whitelist remove '
+- 'kick '
+commands:
+- enabled: true
+  name: server
+  description: Show Minecraft server information
+  platforms:
+  - MINECRAFT
+  - DISCORD
+  minecraft-permission: ''
+  ephemeral: false
+  guild-only: false
+  linked-only: false
+  cooldown-seconds: 5
+  allowed-role-ids: []
+  response: |-
+    **%server_name%**
+    Players: %online_players%/%max_players%
+    Version: %server_version%
+    Uptime: %uptime%
+    Address: %server_address%
+  actions: []
+  options: []
+- enabled: true
+  name: rules
+  description: Show the server rules
+  platforms:
+  - MINECRAFT
+  - DISCORD
+  minecraft-permission: ''
+  ephemeral: true
+  guild-only: false
+  linked-only: false
+  cooldown-seconds: 3
+  allowed-role-ids: []
+  response: Read the rules at https://example.com/rules
+  actions: []
+  options: []
+- enabled: false
+  name: whitelistme
+  description: Add the linked player to the whitelist
+  platforms:
+  - DISCORD
+  ephemeral: true
+  guild-only: true
+  linked-only: true
+  cooldown-seconds: 60
+  allowed-role-ids:
+  - '0'
+  response: Whitelist action completed for %minecraft_name%.
+  actions:
+  - type: RUN_CONSOLE_COMMAND
+    command: whitelist add %minecraft_name%
+  options: []

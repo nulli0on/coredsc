@@ -1,0 +1,8 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# Synchronizes linked players' Minecraft names to Discord nicknames.
+enabled: false
+guild-id: '' # falls back to discord.guild-id
+format: '%player%'
+restore-on-unlink: true

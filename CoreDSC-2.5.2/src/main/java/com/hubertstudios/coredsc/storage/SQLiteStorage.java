@@ -16,11 +16,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 
-/**
- * Owns the SQLite connection and confines every JDBC operation to one
- * dedicated worker thread. SQLite connections must not be shared across
- * Bukkit, JDA and scheduler threads.
- */
+ 
+                                                                      
+                                                                        
+                                     
+   
 public final class SQLiteStorage {
     private static final int SCHEMA_VERSION = 10;
 
@@ -177,10 +177,10 @@ public final class SQLiteStorage {
         });
     }
 
-    /**
-     * Queues connection closure after all already-submitted database work.
-     * This method never blocks the Minecraft main thread.
-     */
+     
+                                                                           
+                                                          
+       
     public synchronized CompletableFuture<Void> closeAsync() {
         if (state == State.CLOSED) {
             return CompletableFuture.completedFuture(null);
@@ -516,9 +516,9 @@ public final class SQLiteStorage {
         addColumnIfMissing(connection, "reward_claims", "inflight_step",
                 "INTEGER NOT NULL DEFAULT -1");
 
-        // Never discard ambiguous account/link data during an automatic upgrade.
-        // A full snapshot has already been created; fail closed and require an
-        // administrator to resolve duplicates deliberately.
+                                                                               
+                                                                             
+                                                          
         requireUniqueLegacyValues(connection, "linked_accounts", "discord_user_id");
         requireUniqueLegacyValues(connection, "pending_link_codes", "minecraft_uuid");
 
@@ -593,7 +593,7 @@ public final class SQLiteStorage {
         }
     }
 
-    /** Creates a consistent SQLite snapshot before any schema or data mutation. */
+                                                                                 
     private void backupDatabaseBeforeMigration(
             Connection connection,
             File databaseFile,

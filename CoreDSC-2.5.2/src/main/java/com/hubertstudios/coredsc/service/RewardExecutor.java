@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 
-/** Executes configured reward commands with persistent, conservative progress tracking. */
+                                                                                         
 public final class RewardExecutor {
     private final CoreDSCPlugin plugin;
     private final RewardClaimRepository claims;
@@ -86,7 +86,7 @@ public final class RewardExecutor {
         });
     }
 
-    /** Prevents callbacks from a disabled module from starting additional commands. */
+                                                                                     
     public void shutdown() {
         active.set(false);
         running.clear();

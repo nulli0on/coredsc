@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Persistent reports with anti-spam and staff lifecycle state. */
+                                                                 
 public final class ReportRepository {
     public enum ReserveStatus { RESERVED, USER_LIMIT, GLOBAL_LIMIT, COOLDOWN, DUPLICATE }
     public record ReserveResult(ReserveStatus status, long reportId, long remainingMillis) { }

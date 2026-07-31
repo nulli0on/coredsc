@@ -4,7 +4,7 @@ import com.hubertstudios.coredsc.CoreDSCPlugin;
 import com.hubertstudios.coredsc.module.CoreModule;
 import com.hubertstudios.coredsc.service.PlaceholderService;
 
-/** Installs the optional PlaceholderAPI formatter used by all other modules. */
+                                                                              
 public final class PlaceholderAPIModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private boolean available;

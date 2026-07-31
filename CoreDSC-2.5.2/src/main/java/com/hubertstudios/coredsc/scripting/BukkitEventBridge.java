@@ -33,15 +33,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 import java.util.regex.Pattern;
 
-/**
- * Opt-in adapter for selected events exposed by other Bukkit plugins.
- *
- * <p>Only explicitly configured public, no-argument JavaBean or record
- * accessors are invoked. CoreDSC never scans every method or permits arbitrary
- * exact method names. Accessor code still belongs to the source plugin and is
- * therefore trusted configuration. Extracted values are converted into bounded
- * JSON-safe data before they cross the Python worker boundary.</p>
- */
+ 
+                                                                      
+  
+                                                                       
+                                                                               
+                                                                              
+                                                                               
+                                                                   
+   
 public final class BukkitEventBridge implements Listener {
     private static final Pattern SAFE_EVENT_NAME = Pattern.compile("[a-z0-9][a-z0-9_.:-]{0,63}");
     private static final Pattern SAFE_PROPERTY = Pattern.compile("[A-Za-z_$][A-Za-z0-9_$]*(\\.[A-Za-z_$][A-Za-z0-9_$]*){0,7}");
@@ -286,7 +286,7 @@ public final class BukkitEventBridge implements Listener {
                     return method;
                 }
             } catch (NoSuchMethodException ignored) {
-                // Try the next conventional JavaBean accessor name.
+                                                                  
             }
         }
         if (type.isRecord()) {

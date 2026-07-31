@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 
-/** Safe, non-destructive migration of a local DiscordSRV installation. */
+                                                                        
 public final class DiscordSrvMigrationService {
     private static final Pattern SNOWFLAKE = Pattern.compile("[1-9][0-9]{16,19}");
     private static final Pattern UUID_PATTERN = Pattern.compile(
@@ -580,7 +580,7 @@ public final class DiscordSrvMigrationService {
                 YamlConfiguration config = loadYaml(new File(directory, "config.yml"), false);
                 jdbc = text(config.getString("Experiment_JdbcAccountLinkBackend"));
             } catch (Exception ignored) {
-                // A malformed source config is already reported elsewhere.
+                                                                         
             }
             if (jdbc.startsWith("jdbc:") && !jdbc.contains("HOST") && discordSrv == null) {
                 warnings.add("DiscordSRV appears to use JDBC account linking. Keep DiscordSRV running during migration so CoreDSC can read links through its public API.");
@@ -631,7 +631,7 @@ public final class DiscordSrvMigrationService {
                 UUID uuid = UUID.fromString(uuidText);
                 if (!result.containsKey(discordId) && !result.containsValue(uuid)) result.put(discordId, uuid);
             } catch (IllegalArgumentException ignored) {
-                // Invalid rows are counted later or ignored safely.
+                                                                  
             }
         }
         return result;

@@ -43,7 +43,7 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-/** Moderation cases and appeal workflow shared between Minecraft and Discord. */
+                                                                               
 public final class CaseModule implements CoreModule, DiscordCommandContributor {
     private final CoreDSCPlugin plugin;
     private CaseRepository cases;

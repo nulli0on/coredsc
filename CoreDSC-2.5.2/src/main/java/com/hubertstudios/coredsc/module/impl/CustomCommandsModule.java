@@ -46,7 +46,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
-/** Shared config-driven commands and actions for Minecraft and Discord. */
+                                                                         
 public final class CustomCommandsModule implements CoreModule, DiscordCommandContributor {
     private static final Pattern NAME = Pattern.compile("[a-z0-9_-]{1,32}");
     private static final Set<String> RESERVED = Set.of("coredsc","link","unlink","account","ticket","report","case","appeal","apply","application","resetpassword");

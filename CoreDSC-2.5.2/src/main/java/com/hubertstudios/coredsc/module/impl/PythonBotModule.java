@@ -57,7 +57,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-/** Optional trusted Python 3 extension layer for custom commands and events. */
+                                                                              
 public final class PythonBotModule implements CoreModule, DiscordCommandContributor, Listener {
     private static final Set<String> RESERVED_COMMANDS = Set.of(
             "coredsc", "link", "unlink", "account", "ticket", "report", "case", "appeal",
@@ -645,7 +645,7 @@ public final class PythonBotModule implements CoreModule, DiscordCommandContribu
             frozenRawData.forEach((key, value) ->
                     safeData.put(key, BukkitEventBridge.jsonSafe(value)));
             Map<String, Object> event = new LinkedHashMap<>();
-            // Keep direct field access compatible with built-in event scripts.
+                                                                             
             event.putAll(safeData);
             event.put("name", normalized);
             event.put("source", TextUtil.truncate(
@@ -749,11 +749,11 @@ public final class PythonBotModule implements CoreModule, DiscordCommandContribu
         return true;
     }
 
-    /**
-     * Atomically checks a command cooldown and the shared Python execution budget.
-     * A rejected request consumes neither resource. Returns -1 for the shared
-     * rate limit, a positive cooldown remainder in milliseconds, or 0 when accepted.
-     */
+     
+                                                                                   
+                                                                              
+                                                                                     
+       
     private synchronized long claimCommandExecution(CommandSpec command, String identity) {
         long now = System.currentTimeMillis();
         long duration = Math.max(0L, command.cooldownSeconds()) * 1000L;

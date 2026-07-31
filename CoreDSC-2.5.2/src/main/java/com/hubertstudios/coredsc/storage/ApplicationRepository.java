@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Persistent whitelist/application questionnaires. */
+                                                     
 public final class ApplicationRepository {
     public record Application(
             long id, String minecraftUuid, String minecraftName, String discordUserId,

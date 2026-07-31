@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/** Small dependency-free JSON codec for the local Python worker protocol. */
+                                                                           
 public final class MiniJson {
     private MiniJson() { }
 
@@ -195,9 +195,9 @@ public final class MiniJson {
 
         private Object number() {
             int start = index;
-            if (consume('-')) { /* sign */ }
+            if (consume('-')) {          }
             if (consume('0')) {
-                // zero cannot be followed by another integer digit
+                                                                 
             } else {
                 digits();
             }

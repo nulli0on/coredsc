@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-/** Optional network transport used by CoreDSC multi-server installations. */
+                                                                           
 public interface NetworkBus extends AutoCloseable {
     CompletableFuture<Void> publish(String eventType, Map<String, String> data);
     void subscribe(BiConsumer<String, Map<String, String>> listener);

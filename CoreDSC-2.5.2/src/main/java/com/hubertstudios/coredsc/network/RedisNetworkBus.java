@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiConsumer;
 
-/** Minimal Redis RESP2 transport: no dependency, bounded reconnect, TLS/auth support. */
+                                                                                       
 public final class RedisNetworkBus implements NetworkBus {
     private final String host;
     private final int port;
@@ -121,7 +121,7 @@ public final class RedisNetworkBus implements NetworkBus {
                 subscriberSocket = socket;
                 initialise(input, output);
                 writeCommand(output, "SUBSCRIBE", channel);
-                readResp(input); // subscription acknowledgement
+                readResp(input);                              
                 connected = true;
                 delay = 1_000L;
                 while (!closed.get()) {

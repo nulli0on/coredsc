@@ -69,7 +69,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
-/** Minecraft-first player reports with Discord staff lifecycle and offline replies. */
+                                                                                     
 public final class ReportModule implements CoreModule, DiscordCommandContributor {
     private final CoreDSCPlugin plugin;
     private final Map<UUID, ArrayDeque<String>> recentChat = new ConcurrentHashMap<>();
