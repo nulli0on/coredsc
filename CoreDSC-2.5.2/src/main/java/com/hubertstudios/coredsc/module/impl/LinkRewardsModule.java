@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 
 import java.util.List;
 
-/** Grants a configurable first-link reward with persistent crash-aware claims. */
+                                                                                
 public final class LinkRewardsModule implements CoreModule, Listener {
     private final CoreDSCPlugin plugin;
     private RewardExecutor rewards;

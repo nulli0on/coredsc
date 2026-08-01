@@ -61,7 +61,7 @@ import java.util.HexFormat;
 import java.util.UUID;
 import java.util.logging.Level;
 
-/** Implements secure, persistent Minecraft/Discord account linking. */
+                                                                     
 public final class LinkModule implements CoreModule, DiscordCommandContributor, Listener {
     private static final CommandExecutor DISABLED_EXECUTOR = (sender, command, label, args) -> {
         sender.sendMessage("§cThis CoreDSC module is disabled.");
@@ -516,7 +516,7 @@ public final class LinkModule implements CoreModule, DiscordCommandContributor, 
                     if (error != null) {
                         plugin.getLogger().warning("[Link] Could not load required-link state for "
                                 + online.getName() + ": " + rootMessage(error));
-                        return; // Fail open when storage is unavailable; do not imprison players incorrectly.
+                        return;                                                                             
                     }
                     enforcementStates.put(uuid, state);
                     if (!state.linked()) notifyRestrictedOrGrace(online, state);
@@ -617,8 +617,8 @@ public final class LinkModule implements CoreModule, DiscordCommandContributor, 
             UUID uuid = UUID.fromString(account.minecraftUuid());
             LinkEnforcementRepository enforcementRepository = linkEnforcement;
             if (enforcementRepository != null) {
-                // A later unlink starts a fresh grace period instead of reusing an
-                // expired pre-link timestamp from an earlier enforcement cycle.
+                                                                                 
+                                                                              
                 enforcementRepository.clear(uuid.toString()).exceptionally(error -> {
                     plugin.getLogger().warning("[Link] Could not clear required-link grace state for "
                             + account.minecraftName() + ": " + rootMessage(error));

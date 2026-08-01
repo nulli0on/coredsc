@@ -62,7 +62,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
-/** Two-way Minecraft/Discord support tickets with persistent offline delivery. */
+                                                                                
 public final class TicketModule implements CoreModule, DiscordCommandContributor {
     private final CoreDSCPlugin plugin;
     private LinkedAccountRepository linkedAccounts;

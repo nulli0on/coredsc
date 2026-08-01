@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-/** Atomic audit/cooldown storage for AuthMe password resets. */
+                                                              
 public final class PasswordResetLogRepository {
 
     public record ResetReservation(boolean allowed, long remainingMillis, long resetAt) { }

@@ -30,10 +30,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
-/**
- * Initial bidirectional linked-account ban synchronization. Only bans created
- * by this module are automatically removed on the opposite platform.
- */
+ 
+                                                                              
+                                                                     
+   
 public final class BanSyncModule implements CoreModule, Listener {
     private static final Pattern SAFE_MINECRAFT_NAME = Pattern.compile("[A-Za-z0-9_]{1,16}");
 
@@ -195,7 +195,7 @@ public final class BanSyncModule implements CoreModule, Listener {
                             warn("Could not inspect Minecraft ban state for " + account.minecraftName(), lookupError);
                             return;
                         }
-                        // Do not claim ownership of a pre-existing Minecraft ban.
+                                                                                
                         if (Boolean.TRUE.equals(alreadyBanned)) {
                             inFlightDiscordOperations.remove(operationKey);
                             return;
@@ -250,9 +250,9 @@ public final class BanSyncModule implements CoreModule, Listener {
                 return;
             }
             BanSyncRepository.State state = stored.get();
-            // The Discord side is now unbanned, so any Discord ownership marker is stale.
-            // If CoreDSC also owns the mirrored Minecraft ban, remove it while the module
-            // is active. Otherwise only clear the stale ownership record.
+                                                                                        
+                                                                                        
+                                                                        
             if (!state.minecraftManaged()) {
                 updateOrDelete(stateRepository, state, false, false).whenComplete((ignored, stateError) -> {
                     inFlightDiscordOperations.remove(operationKey);
@@ -280,8 +280,8 @@ public final class BanSyncModule implements CoreModule, Listener {
                     return;
                 }
                 plugin.recordFeatureUse("ban_sync");
-                // The pardon was already dispatched. Persist its terminal ownership state
-                // even if a reload disabled the module before this callback ran.
+                                                                                        
+                                                                               
                 updateOrDelete(stateRepository, state, false, false).whenComplete((ignored, stateError) -> {
                     inFlightDiscordOperations.remove(operationKey);
                     if (stateError != null) warn("Minecraft pardon applied but ownership state was not persisted", stateError);

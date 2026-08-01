@@ -23,11 +23,11 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Passive Simple Voice Chat server-side extension used by CoreDSC. Audio
- * outputs are created lazily for active Discord speakers and closed when their
- * anchor player leaves the eligible set.
- */
+ 
+                                                                         
+                                                                               
+                                         
+   
 public final class SimpleVoiceChatBridge implements VoicechatPlugin, VoiceBridgeTransport {
     private static final int FRAME_SAMPLES = 960;
 

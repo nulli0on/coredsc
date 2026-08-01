@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Pure configuration-key typo detector, kept independent from Bukkit for testing. */
+                                                                                    
 public final class ConfigKeyInspector {
     private ConfigKeyInspector() { }
 

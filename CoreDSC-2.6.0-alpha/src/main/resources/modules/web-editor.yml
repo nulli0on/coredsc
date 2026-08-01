@@ -1,0 +1,19 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# CoreDSC WebEditor (alpha)
+enabled: false
+
+# Alpha security boundary: only loopback addresses are accepted. For a remote
+# server, use an SSH tunnel instead of exposing this HTTP listener publicly.
+bind-address: "127.0.0.1"
+port: 8765
+
+session:
+  default-minutes: 15
+  maximum-minutes: 30
+  maximum-failed-auth-attempts-per-minute: 30
+
+editor:
+  # Per-file UTF-8 request/read limit. Allowed range: 65536-2097152 bytes.
+  maximum-file-bytes: 1048576

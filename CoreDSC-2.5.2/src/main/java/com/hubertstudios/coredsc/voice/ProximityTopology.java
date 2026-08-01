@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-/** Pure proximity graph calculation used by the Discord room orchestrator. */
+                                                                            
 public final class ProximityTopology {
     private ProximityTopology() { }
 

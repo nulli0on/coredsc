@@ -10,13 +10,13 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * Registers the Simple Voice Chat API plugin during CoreDSC's early startup.
- * Simple Voice Chat snapshots API plugins shortly after Bukkit plugin enable,
- * therefore registration cannot wait for CoreDSC's asynchronous licence and
- * database startup. The registered bridge remains passive until the module is
- * enabled after the normal CoreDSC startup gates have completed.
- */
+ 
+                                                                             
+                                                                              
+                                                                            
+                                                                              
+                                                                 
+   
 public final class VoiceChatBridgeBootstrap {
     private final VoiceBridgeTransport transport;
     private final String registrationDetail;

@@ -25,7 +25,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-/** Synchronizes linked Minecraft names to Discord while preserving prior nicknames. */
+                                                                                     
 public final class NicknameSyncModule implements CoreModule, Listener {
     private final CoreDSCPlugin plugin;
     private final AtomicLong lastWarning = new AtomicLong();
@@ -166,8 +166,8 @@ public final class NicknameSyncModule implements CoreModule, Listener {
         if (!active || accountRepository == null || repository == null
                 || minecraftName == null || minecraftName.isBlank() || !validSnowflake(discordUserId)) return;
         long operation = beginOperation(discordUserId);
-        // Recheck the link before touching Discord. This prevents a delayed sync-all
-        // result from reapplying a nickname after the account was unlinked.
+                                                                                   
+                                                                          
         accountRepository.findByDiscordUserId(discordUserId).whenComplete((linked, linkError) -> {
             if (!isCurrent(discordUserId, operation)) return;
             if (linkError != null) {
@@ -243,7 +243,7 @@ public final class NicknameSyncModule implements CoreModule, Listener {
                     return;
                 }
                 String current = member.getNickname() == null ? "" : member.getNickname();
-                // Never overwrite a nickname changed by a person or another bot after CoreDSC.
+                                                                                             
                 if (!current.equals(stored.get().syncedNickname())) {
                     repository.delete(discordUserId);
                     return;

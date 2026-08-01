@@ -1,0 +1,9 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# Shared CoreDSC messages. All other messages are in /modules
+prefix: "&8[&bCoreDSC&8] "
+no-permission: "%prefix%&cYou do not have permission."
+player-only: "%prefix%&cOnly players can use this command."
+reload-success: "%prefix%&aCoreDSC configuration reloaded."
+reload-failed: "%prefix%&cReload failed; the previous valid configuration is still active."

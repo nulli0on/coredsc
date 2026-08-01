@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-/** Asynchronous access to the one-to-one Minecraft/Discord account map. */
+                                                                         
 public final class LinkedAccountRepository {
 
     public record LinkedAccount(

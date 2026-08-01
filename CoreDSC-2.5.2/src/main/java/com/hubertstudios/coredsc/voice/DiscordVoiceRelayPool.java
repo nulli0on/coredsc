@@ -30,11 +30,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.LongAdder;
 
-/**
- * Owns optional secondary Discord bot connections used for independent
- * proximity-room audio. One relay account can serve one Discord voice channel
- * at a time; channel management remains on CoreDSC's main bot.
- */
+ 
+                                                                       
+                                                                              
+                                                               
+   
 public final class DiscordVoiceRelayPool {
     private static final int FRAME_SAMPLES = 960;
 
@@ -117,11 +117,11 @@ public final class DiscordVoiceRelayPool {
         }
     }
 
-    /**
-     * Assigns an available relay to the room. Existing assignments are reused.
-     * The return value only states whether a relay was reserved; the Discord
-     * audio connection may still be connecting.
-     */
+     
+                                                                               
+                                                                             
+                                                
+       
     public boolean assign(UUID roomId, long channelId) {
         if (!running.get() || roomId == null || channelId <= 0L) {
             return false;
@@ -170,7 +170,7 @@ public final class DiscordVoiceRelayPool {
         return bots.size();
     }
 
-    /** Returns the Discord user IDs of relay accounts that have connected. */
+                                                                            
     public Set<String> relayUserIds() {
         Set<String> ids = new LinkedHashSet<>();
         for (RelayBot bot : bots) {

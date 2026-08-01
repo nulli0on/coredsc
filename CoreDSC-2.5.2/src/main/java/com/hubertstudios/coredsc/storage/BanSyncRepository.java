@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Tracks only bans owned by CoreDSC, preventing accidental removal of external bans. */
+                                                                                       
 public final class BanSyncRepository {
     public record State(
             String minecraftUuid,

@@ -24,14 +24,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * Loads CoreDSC's modular YAML files into one runtime snapshot and owns schema
- * upgrades for every bundled configuration file.
- *
- * <p>Upgrades are additive and fail-safe: user values are preserved, missing
- * defaults are added, a timestamped backup is created before the first write,
- * and all touched files are restored when any migration step fails.</p>
- */
+ 
+                                                                               
+                                                 
+  
+                                                                             
+                                                                              
+                                                                        
+   
 public final class ConfigManager {
     public static final int CURRENT_CONFIG_VERSION = 4;
 
@@ -97,8 +97,8 @@ public final class ConfigManager {
 
             prepareManagedYaml("config.yml");
             prepareManagedYaml("messages.yml");
-            // Validate/migrate telemetry.yml first so an unknown future schema
-            // is never modified while importing the obsolete license.yml switch.
+                                                                             
+                                                                               
             prepareManagedYaml("telemetry.yml");
             migrateObsoleteLicenseMetrics();
             prepareManagedYaml("secrets.yml");
@@ -106,8 +106,8 @@ public final class ConfigManager {
             prepareManagedYaml("bot/config.yml");
             prepareManagedText("bot/README.md");
 
-            // Runtime files are CoreDSC-owned and must match the installed plugin version.
-            // They participate in the same backup/rollback transaction as YAML migrations.
+                                                                                         
+                                                                                         
             prepareManagedResource("bot/runtime/worker.py", new File(dataFolder, "bot/runtime/worker.py"));
             prepareManagedResource("bot/runtime/coredsc_api.py", new File(dataFolder, "bot/runtime/coredsc_api.py"));
             ensureResourceCreated("bot/scripts/example_command.py", new File(dataFolder, "bot/scripts/example_command.py"));
@@ -155,17 +155,17 @@ public final class ConfigManager {
         logConfigurationIssues(detectedIssues);
     }
 
-    /** Returns a detached copy of the active runtime configuration for rollback. */
+                                                                                  
     public synchronized YamlConfiguration snapshotActive() {
         return cloneYaml(active);
     }
 
-    /** Restores a previously captured runtime snapshot without touching disk. */
+                                                                               
     public synchronized void restoreActive(YamlConfiguration snapshot) {
         restoreActive(snapshot, configIssues);
     }
 
-    /** Restores both runtime values and their diagnostic warning snapshot. */
+                                                                            
     public synchronized void restoreActive(YamlConfiguration snapshot, List<ConfigIssue> issues) {
         active = cloneYaml(Objects.requireNonNull(snapshot, "snapshot"));
         configIssues = issues == null ? List.of() : List.copyOf(issues);
@@ -204,7 +204,7 @@ public final class ConfigManager {
         saveAtomic(yaml, file);
     }
 
-    /** Persists a known dotted runtime path into its owning modular file. */
+                                                                           
     public synchronized void setValue(String runtimePath, Object value)
             throws IOException, InvalidConfigurationException {
         if (runtimePath == null || runtimePath.isBlank()) {
@@ -487,11 +487,11 @@ public final class ConfigManager {
         }
     }
 
-    /**
-     * Preserves the old per-plugin bStats choice while removing license.yml from
-     * active configuration. An old opt-out always wins; migration never turns
-     * metrics back on. The obsolete file itself is left untouched for audit.
-     */
+     
+                                                                                 
+                                                                              
+                                                                             
+       
     private void migrateObsoleteLicenseMetrics()
             throws IOException, InvalidConfigurationException {
         File obsoleteLicense = new File(dataFolder, "license.yml");
@@ -564,9 +564,9 @@ public final class ConfigManager {
                 changed = true;
             }
         }
-        // generated-by-version records the CoreDSC release that last generated or
-        // migrated this file. Do not rewrite otherwise-current files on every
-        // plugin update: Bukkit's YAML writer cannot preserve all user comments.
+                                                                                
+                                                                            
+                                                                               
         if (current.getString("generated-by-version", "").isBlank()) {
             changed = true;
         }
@@ -583,7 +583,7 @@ public final class ConfigManager {
         ensureResourceCreated(resourcePath, new File(dataFolder, resourcePath));
     }
 
-    /** Replaces a CoreDSC-owned non-YAML resource only when its bytes changed. */
+                                                                                
     private void prepareManagedResource(String resourcePath, File destination) throws IOException {
         byte[] bundled;
         try (InputStream input = plugin.getResource(resourcePath)) {

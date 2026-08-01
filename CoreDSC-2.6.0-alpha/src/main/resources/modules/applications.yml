@@ -1,0 +1,36 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# CoreDSC module: applications
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+parent-channel-id: ''
+private-thread: true
+require-linked-account: true
+staff-role-ids: []
+allow-console-actions: false
+console-command-allow-prefixes:
+- whitelist add
+questions:
+- id: age
+  question: How old are you?
+  required: true
+  min-length: 1
+  max-length: 30
+- id: motivation
+  question: Why do you want to join the server?
+  required: true
+  min-length: 20
+  max-length: 800
+- id: experience
+  question: Tell us about your Minecraft experience.
+  required: true
+  min-length: 10
+  max-length: 800
+accept-actions:
+  whitelist: true
+  luckperms-group: ''
+  discord-role-id: ''
+  console-commands: []
+reject-actions:
+  console-commands: []

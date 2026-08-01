@@ -48,7 +48,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-/** Configurable linked-account whitelist/application questionnaire. */
+                                                                     
 public final class ApplicationModule implements CoreModule, DiscordCommandContributor {
     private final CoreDSCPlugin plugin;
     private ApplicationRepository applications;

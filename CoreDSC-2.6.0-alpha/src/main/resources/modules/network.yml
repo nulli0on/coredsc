@@ -1,0 +1,20 @@
+config-version: 4
+generated-by-version: "2.6.0-alpha.1"
+
+# CoreDSC module: network
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+mode: local
+network-id: default
+server-id: survival-1
+shared-links:
+  enabled: true
+  ttl-seconds: 0
+redis:
+  host: 127.0.0.1
+  port: 6379
+  tls: false
+  username: ''
+  password-env: COREDSC_REDIS_PASSWORD
+  database: 0
+  timeout-millis: 5000

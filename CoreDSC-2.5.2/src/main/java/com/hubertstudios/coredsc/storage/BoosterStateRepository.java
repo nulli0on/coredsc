@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Persistent Discord boost state and the latest rewarded period. */
+                                                                   
 public final class BoosterStateRepository {
     public record BoosterState(
             String discordUserId,

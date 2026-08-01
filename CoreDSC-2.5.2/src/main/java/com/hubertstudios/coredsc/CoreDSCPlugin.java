@@ -39,7 +39,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 
-/** Main entry point for CoreDSC. */
+                                  
 public final class CoreDSCPlugin extends JavaPlugin {
     public enum StartupState {
         INITIALIZING,
@@ -195,9 +195,9 @@ public final class CoreDSCPlugin extends JavaPlugin {
             failAndDisable("Configuration initialisation failed", throwable);
             return;
         }
-        // Register the optional Simple Voice Chat API plugin before its delayed
-        // server bootstrap snapshots API extensions. The bridge remains passive
-        // until the voicechat-sync module is enabled.
+                                                                              
+                                                                              
+                                                    
         voiceChatBridge = VoiceChatBridgeBootstrap.registerEarly(this);
 
         printBanner("Starting up");
@@ -237,8 +237,8 @@ public final class CoreDSCPlugin extends JavaPlugin {
                 startupAnnouncementPending.set(false);
             }
 
-            // Discord is optional. CoreDSC starts locally even when the gateway is
-            // unavailable, and the service reports its own connection state.
+                                                                                 
+                                                                           
             discordService.start();
             startupState = StartupState.READY;
             startupFailure = "";
@@ -272,9 +272,9 @@ public final class CoreDSCPlugin extends JavaPlugin {
                 }
             }
 
-            // Publish the offline channel names while JDA is still alive, but
-            // only when Paper itself is stopping. Plugin reload/disable tools
-            // must not advertise a false server outage.
+                                                                            
+                                                                            
+                                                      
             if (getServer().isStopping()) {
                 StatusChannelModule statusChannels = moduleManager.getModule(StatusChannelModule.class);
                 if (statusChannels != null) {
@@ -326,7 +326,7 @@ public final class CoreDSCPlugin extends JavaPlugin {
         getLogger().info("CoreDSC disabled.");
     }
 
-    /** Dispatches work through CoreDSC's scheduler boundary. */
+                                                              
     public void runSync(Runnable task) {
         CoreScheduler current = coreScheduler;
         if (current == null || !isEnabled()) {
@@ -339,7 +339,7 @@ public final class CoreDSCPlugin extends JavaPlugin {
         }
     }
 
-    /** Returns a future completed by a supplier on the global server thread. */
+                                                                              
     public <T> CompletableFuture<T> callSync(Supplier<T> supplier) {
         CoreScheduler current = coreScheduler;
         if (current == null || !isEnabled()) {

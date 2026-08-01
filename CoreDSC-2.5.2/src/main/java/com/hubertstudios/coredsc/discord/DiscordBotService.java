@@ -39,11 +39,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Owns the JDA lifecycle. Startup and shutdown never wait on Discord from the
- * Minecraft main thread. Modules register listeners through this service so
- * they remain valid across reconnects and configuration reloads.
- */
+ 
+                                                                              
+                                                                            
+                                                                 
+   
 public final class DiscordBotService {
 
     public enum State {
@@ -176,7 +176,7 @@ public final class DiscordBotService {
         }
     }
 
-    /** Initiates a connection and returns immediately. */
+                                                        
     public void start() {
         ConnectionSettings settings;
         try {
@@ -188,10 +188,10 @@ public final class DiscordBotService {
         start(settings);
     }
 
-    /**
-     * Applies changed settings. A reconnect only occurs when the token,
-     * enabled state or required gateway intents changed.
-     */
+     
+                                                                        
+                                                         
+       
     public void validateConfiguration() {
         resolveSettings();
     }
@@ -234,7 +234,7 @@ public final class DiscordBotService {
         }
     }
 
-    /** Starts Discord with already-resolved settings and returns immediately. */
+                                                                               
     private void start(ConnectionSettings settings) {
         currentSettings = settings;
         if (!settings.enabled()) {
@@ -335,13 +335,13 @@ public final class DiscordBotService {
                             JDABuilder builder = JDABuilder.createLight(
                                     settings.token(), settings.intents());
                             if (settings.intents().contains(GatewayIntent.GUILD_VOICE_STATES)) {
-                                // createLight disables the voice-state cache. Audio receive and
-                                // GuildVoiceState echo protection require it explicitly.
+                                                                                              
+                                                                                       
                                 builder.enableCache(CacheFlag.VOICE_STATE);
                             }
                             if (settings.intents().contains(GatewayIntent.GUILD_MEMBERS)) {
-                                // JDA only emits reliable member/role events for cached members.
-                                // These modules intentionally require full member state.
+                                                                                               
+                                                                                       
                                 builder.setMemberCachePolicy(MemberCachePolicy.ALL);
                             } else if (settings.intents().contains(GatewayIntent.GUILD_VOICE_STATES)) {
                                 builder.setMemberCachePolicy(MemberCachePolicy.VOICE);
@@ -357,9 +357,9 @@ public final class DiscordBotService {
                                     built.shutdownNow();
                                     return;
                                 }
-                                // Publication and reconciliation are atomic with listener add/remove.
-                                // This prevents a listener added during JDA construction from being
-                                // attached twice to the same JDA instance.
+                                                                                                    
+                                                                                                  
+                                                                         
                                 jda = built;
                                 for (Object listener : eventListeners) {
                                     if (!startupListeners.contains(listener)) {
@@ -393,7 +393,7 @@ public final class DiscordBotService {
         }
     }
 
-    /** Requests shutdown without blocking the Minecraft thread. */
+                                                                 
     public void stop() {
         generation.incrementAndGet();
         commandRegistrationGeneration.incrementAndGet();
@@ -410,7 +410,7 @@ public final class DiscordBotService {
                 try {
                     current.shutdownNow();
                 } catch (Throwable ignored) {
-                    // Nothing else can be done safely during server shutdown.
+                                                                            
                 }
             }
         }
@@ -425,7 +425,7 @@ public final class DiscordBotService {
         commandRegistrationDetail = "Discord service stopped";
     }
 
-    /** Replaces the bot's command set to match the currently enabled modules. */
+                                                                               
     public void registerSlashCommands() {
         JDA current = jda;
         if (current == null || state != State.READY) {
@@ -446,9 +446,9 @@ public final class DiscordBotService {
             return;
         }
 
-        // Discord REST requests can complete out of order. Chain the entire
-        // clear-and-replace operation so an obsolete deletion can never land
-        // after a newer command registration.
+                                                                          
+                                                                           
+                                            
         synchronized (commandRegistrationLock) {
             commandRegistrationChain = commandRegistrationChain
                     .handle((ignored, error) -> null)
@@ -676,10 +676,10 @@ public final class DiscordBotService {
         }
     }
 
-    /**
-     * Persists successful command scopes so a later server restart can remove
-     * obsolete guild/global commands after the configured scope changes.
-     */
+     
+                                                                              
+                                                                         
+       
     private boolean persistKnownCommandScopes() {
         synchronized (commandScopeStateLock) {
             Path stateFile = commandScopeStateFile();

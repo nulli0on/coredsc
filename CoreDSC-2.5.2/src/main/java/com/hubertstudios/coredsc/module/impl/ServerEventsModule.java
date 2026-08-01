@@ -46,7 +46,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-/** Sends configurable Minecraft lifecycle, account and support events to Discord. */
+                                                                                   
 public final class ServerEventsModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private final ArrayDeque<Long> deliveryWindow = new ArrayDeque<>();

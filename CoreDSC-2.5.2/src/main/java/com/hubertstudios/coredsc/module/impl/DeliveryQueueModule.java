@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/** Durable, bounded retry queue for important Discord messages. */
+                                                                 
 public final class DeliveryQueueModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private final AtomicBoolean active = new AtomicBoolean();

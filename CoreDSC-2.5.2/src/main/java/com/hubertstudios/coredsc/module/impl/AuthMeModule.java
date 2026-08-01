@@ -26,7 +26,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
-/** Optional AuthMeReloaded password-reset integration. */
+                                                        
 public final class AuthMeModule implements CoreModule, DiscordCommandContributor {
     private static final SecureRandom RANDOM = new SecureRandom();
     private static final String PASSWORD_ALPHABET =

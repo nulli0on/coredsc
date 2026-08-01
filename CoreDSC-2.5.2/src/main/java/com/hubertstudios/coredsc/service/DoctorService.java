@@ -29,7 +29,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-/** Operational diagnostics without exposing tokens, credentials, or private data. */
+                                                                                   
 public final class DoctorService {
     private final CoreDSCPlugin plugin;
     public DoctorService(CoreDSCPlugin plugin) { this.plugin = plugin; }

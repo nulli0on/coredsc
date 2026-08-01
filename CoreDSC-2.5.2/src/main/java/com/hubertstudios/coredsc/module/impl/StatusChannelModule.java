@@ -25,7 +25,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/** Updates configured Discord channel names only when their value changes. */
+                                                                            
 public final class StatusChannelModule implements CoreModule {
     private static final String DEFAULT_OFFLINE_NAME = "Server is offline";
 
@@ -112,14 +112,14 @@ public final class StatusChannelModule implements CoreModule {
         shutdownWaitSeconds = 3;
     }
 
-    /**
-     * Publishes every configured offline channel name before the Discord client
-     * is stopped. This is intentionally separate from {@link #disable()} so a
-     * normal CoreDSC reload does not briefly advertise the server as offline.
-     *
-     * @return true when all required rename callbacks completed successfully
-     *         within the supplied timeout, or when no rename was necessary
-     */
+     
+                                                                                
+                                                                              
+                                                                              
+      
+                                                                             
+                                                                           
+       
     public boolean publishOfflineStatus() {
         DiscordBotService discord = plugin.getDiscordService();
         JDA jda = discord == null ? null : discord.getJda();
@@ -198,7 +198,7 @@ public final class StatusChannelModule implements CoreModule {
             if (type.isBlank()) {
                 type = "voice";
             }
-            // "name" remains a backwards-compatible alias for online-name.
+                                                                         
             String onlineTemplate = firstNonBlank(entry.get("online-name"), entry.get("name"));
             String offlineTemplate = string(entry.get("offline-name"));
             if (offlineTemplate.isBlank()) {

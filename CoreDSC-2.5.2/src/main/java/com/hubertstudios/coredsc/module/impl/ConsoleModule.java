@@ -31,7 +31,7 @@ import java.util.logging.LogRecord;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-/** Batched Discord console feed and tightly controlled remote command bridge. */
+                                                                               
 public final class ConsoleModule implements CoreModule {
     private enum RemoteMode { OFF, ALLOWLIST, FULL }
 

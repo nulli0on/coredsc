@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-/** Issues and atomically consumes temporary account-linking codes. */
+                                                                    
 public final class PendingLinkCodeRepository {
 
     private static final String CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";

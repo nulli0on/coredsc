@@ -2,7 +2,7 @@ package com.hubertstudios.coredsc.api;
 
 import org.bukkit.OfflinePlayer;
 
-/** Public adapter service for confirmed or observed moderation actions. */
+                                                                         
 public interface ModerationAuditService {
     record ModerationAction(
             String action,

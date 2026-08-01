@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Persistent and race-safe ticket lifecycle operations. */
+                                                          
 public final class TicketRepository {
     public enum ReserveStatus {
         RESERVED,

@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Optional Redis-backed event bus and shared account-link registry. */
+                                                                      
 public final class NetworkModule implements CoreModule {
     private final CoreDSCPlugin plugin;
     private NetworkBus bus;

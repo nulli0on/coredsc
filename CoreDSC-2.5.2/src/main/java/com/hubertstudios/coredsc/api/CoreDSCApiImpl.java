@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-/** Internal provider registered through Bukkit ServicesManager. */
+                                                                 
 public final class CoreDSCApiImpl implements CoreDSCApi {
     private final CoreDSCPlugin plugin;
     private final LinkedAccountRepository links;

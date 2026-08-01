@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-/** Append-only audit trail for Discord-originated console commands. */
+                                                                     
 public final class ConsoleAuditRepository {
     private final SQLiteStorage storage;
 

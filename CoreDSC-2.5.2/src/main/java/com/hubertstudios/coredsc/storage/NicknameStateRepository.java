@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-/** Stores the nickname that existed before CoreDSC changed it. */
+                                                                
 public final class NicknameStateRepository {
     public record NicknameState(String discordUserId, String originalNickname, String syncedNickname, long updatedAt) { }
 

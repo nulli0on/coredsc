@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-/** Durable queue for important Discord deliveries. */
+                                                    
 public final class OutboxRepository {
     public record OutboxMessage(
             long id, String dedupeKey, String channelId, String message, int priority,
