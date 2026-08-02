@@ -1,0 +1,90 @@
+---
+sidebar_position: 1
+slug: /
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+# CoreDSC
+
+<div className="home-center">
+
+<img className="hero-logo" src={useBaseUrl('/assets/logo.svg')} alt="CoreDSC logo" />
+
+**A modular Discord operations platform for Paper, Folia and Spigot servers.**
+
+<div className="home-actions">
+  <Link className="button button--primary button--lg" to="/installation">Install</Link>
+  <Link className="button button--secondary button--lg" to="/configuration">Configuration</Link>
+  <Link className="button button--secondary button--lg" to="/troubleshooting">Troubleshooting</Link>
+</div>
+
+</div>
+
+
+## What CoreDSC does
+
+<div className="feature-grid">
+  <div className="feature-card"><h3>Chat bridge</h3><p>Send Minecraft chat to Discord and Discord messages back to the server.</p></div>
+  <div className="feature-card"><h3>Account linking</h3><p>Link Minecraft UUIDs to Discord accounts, then use that identity for roles, rewards and access rules.</p></div>
+  <div className="feature-card"><h3>Server operations</h3><p>Publish visual server events, maintain status channels and classify console incidents without flooding Discord.</p></div>
+  <div className="feature-card"><h3>Gameplay terminals</h3><p>Optional Vault economy, cinematic lore personas and persistent ELO leaderboards connect the game to Discord.</p></div>
+  <div className="feature-card"><h3>Visual Control Center</h3><p>Toggle modules, select live Discord channels and build event embeds through a guarded local browser session.</p></div>
+  <div className="feature-card"><h3>Folia ownership</h3><p>Entity, region, global and asynchronous work use explicit scheduler boundaries instead of one assumed server thread.</p></div>
+</div>
+
+## Requirements
+
+- Java 21
+- Paper, Folia or a compatible Spigot server. Paper/Folia is recommended for the complete feature set.
+- A Discord bot for Discord-facing features
+- Python 3.8+ only for the optional external worker
+- Simple Voice Chat only for the optional voice-room integration
+
+## Minimal setup
+
+<Tabs>
+<TabItem value="environment" label="Environment variable" default>
+
+```bash
+export COREDSC_BOT_TOKEN='your-token'
+```
+
+```yaml title="plugins/CoreDSC/config.yml"
+discord:
+  enabled: true
+  token-source: ENV
+  token-env-name: COREDSC_BOT_TOKEN
+  guild-id: 123456789012345678
+  command-registration: guild
+```
+
+</TabItem>
+<TabItem value="file" label="secrets.yml">
+
+```yaml title="plugins/CoreDSC/config.yml"
+discord:
+  token-source: SECRETS.YML
+```
+
+```yaml title="plugins/CoreDSC/secrets.yml"
+discord-token: 'your-token'
+```
+
+</TabItem>
+</Tabs>
+
+Then configure a channel in `modules/chat-sync.yml`, restart Paper and run:
+
+```text
+/coredsc doctor
+/coredsc status
+```
+
+## Start here
+
+New installation: [Installation](./installation/index.md)  
+Existing 2.4.x installation: [Upgrade CoreDSC](./installation/upgrade.md)  
+Moving from DiscordSRV: [Migration guide](./installation/discordsrv-migration.md)

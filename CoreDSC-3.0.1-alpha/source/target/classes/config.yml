@@ -1,0 +1,24 @@
+# CoreDSC global configuration
+# Module settings are stored in plugins/CoreDSC/modules/.
+# GUI layouts are stored in plugins/CoreDSC/guis/.
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+language: en
+debug: false
+startup-banner:
+  # FULL, COMPACT or OFF
+  mode: FULL
+  colors: true
+discord:
+  enabled: true
+  token-source: ENV
+  token-env-name: COREDSC_BOT_TOKEN
+  guild-id: 0
+  command-registration: guild
+  link-role-id: ''
+  unlink-remove-role: true
+
+storage:
+  sqlite:
+    queue-capacity: 8192

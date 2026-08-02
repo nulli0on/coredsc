@@ -1,0 +1,66 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+# CoreDSC module: chat-sync
+enabled: true
+
+minecraft-to-discord:
+  channel-id: ''
+  format: '**%displayname%**: %message%'
+  webhook:
+    enabled: false
+    auto-create: true
+    fallback-to-bot: true
+    name: Chat
+    username-format: '%displayname%'
+    # Leave blank to use the webhook's normal avatar and avoid an avatar provider.
+    avatar-url: 'https://mc-heads.net/avatar/%uuid%/128'
+    message-format: '%message%'
+
+discord-to-minecraft:
+  channel-id: ''
+
+  allow-linked-users: true
+  allow-unlinked-users: false
+
+  # Backwards-compatible generic format. The two policy-specific formats take
+  # priority and fall back to this value when absent in an older configuration.
+  format: '&9[Discord] &f%user%: %message%%attachments%%reply%'
+  linked-format: '&9[Discord] &b%minecraft_player% &8(%discord_user%)&f: %message%%attachments%%reply%'
+  unlinked-format: '&9[Discord] &f%discord_user%: %message%%attachments%%reply%'
+
+  ignore-bots: true
+  ignore-webhooks: true
+  block-everyone-mentions: true
+
+  # Optional Discord role policy. An empty allowed list accepts every role.
+  # A blocked role always wins over an allowed role.
+  allowed-role-ids: []
+  blocked-role-ids: []
+
+  attachments:
+    enabled: true
+    maximum: 3
+    format: ' &7[%name%: %url%]'
+  replies:
+    enabled: true
+    format: ' &8(reply to %reply_user%: %reply_message%)'
+  denied-notice:
+    enabled: false
+    message: "Your message was not forwarded to Minecraft by this server's chat policy."
+
+# Reverse-chat placeholders:
+# %discord_user%, %discord_name%, %discord_id%, %top_role%,
+# %minecraft_player%, %minecraft_uuid%, %linked%, %message%, %attachments%, %reply%
+# Minecraft-to-Discord placeholders:
+# %player%, %displayname%, %uuid%, %world%, %server%, %message%
+
+# Ordered automatic Discord replies. match: EXACT, PREFIX, CONTAINS or REGEX.
+canned-responses: []
+# Example:
+#  - id: ip
+#    trigger: '!ip'
+#    match: EXACT
+#    response: 'play.example.net'
+#    cooldown-seconds: 30
+#    stop-forwarding: true

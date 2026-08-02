@@ -1,0 +1,80 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Initial setup
+
+## Install the JAR
+
+Place the release JAR in `plugins/` and start Paper once. CoreDSC creates:
+
+```text
+plugins/CoreDSC/
+├── config.yml
+├── messages.yml
+├── secrets.yml
+├── telemetry.yml
+├── modules/
+├── bot/
+├── guis/
+└── backups/
+```
+
+Stop the server before editing the initial configuration.
+
+## Configure the token
+
+<Tabs>
+<TabItem value="env" label="Environment variable" default>
+
+Linux shell:
+
+```bash
+export COREDSC_BOT_TOKEN='your-token'
+java -jar paper.jar nogui
+```
+
+systemd:
+
+```ini
+[Service]
+Environment="COREDSC_BOT_TOKEN=your-token"
+```
+
+</TabItem>
+<TabItem value="file" label="secrets.yml">
+
+```yaml title="config.yml"
+discord:
+  token-source: SECRETS.YML
+```
+
+```yaml title="secrets.yml"
+discord-token: 'your-token'
+```
+
+Restrict the file to the server account.
+
+</TabItem>
+</Tabs>
+
+## Set the guild
+
+```yaml title="config.yml"
+discord:
+  enabled: true
+  guild-id: 123456789012345678
+  command-registration: guild
+```
+
+Keep the ID as a Discord snowflake. Do not use the guild name.
+
+## First start
+
+Start Paper and run:
+
+```text
+/coredsc doctor
+/coredsc status
+```
+
+The core and storage should be ready. Discord should resolve the configured guild before guild-scoped commands are registered.

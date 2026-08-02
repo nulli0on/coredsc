@@ -1,0 +1,54 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+enabled: false
+
+discord:
+  # 0 uses discord.guild-id from config.yml.
+  guild-id: 0
+  # Temporary rooms are created inside this category.
+  category-id: ''
+
+  lobby-channel-id: ''
+
+proximity:
+  horizontal-distance: 48.0
+  vertical-distance: 24.0
+  # Players already sharing a room may move this many extra blocks before a split.
+  falloff: 6.0
+  minimum-players: 2
+  update-ticks: 10
+
+rooms:
+  maximum-active-rooms: 12
+  name-prefix: coredsc-proximity
+  channels-visible: true
+  allow-linked-guests: true
+  # When false, only the link role and configured guest roles can join.
+  allow-unlinked-guests: false
+  guest-role-ids: []
+  # Creates a short-lived solo room when a Simple Voice Chat microphone becomes active.
+  create-solo-on-speech: false
+  speech-activity-seconds: 4
+  close-grace-seconds: 20
+  cleanup-managed-channels-on-startup: true
+
+relay-bots:
+  token-environment-variables: []
+
+audio:
+  # Unsupported in this release.
+  minecraft-to-discord:
+    enabled: false
+    gain: 1.0
+  discord-to-minecraft:
+    enabled: false
+    gain: 1.0
+  max-buffered-frames: 100
+  max-mixed-sources-per-frame: 32
+
+security:
+  require-linked-accounts: true
+  include-unlinked-minecraft-players: false
+  require-discord-deafened-for-minecraft-relay: true
+  opt-out-permission: coredsc.voice.optout

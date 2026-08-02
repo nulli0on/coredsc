@@ -1,0 +1,37 @@
+# Frequently Asked Questions
+
+## Does CoreDSC replace DiscordSRV?
+
+CoreDSC covers the usual Discord bridge features and adds separate modules for tickets, reports, workflows and other server tools. DiscordSRV has been around longer; CoreDSC is built around modular configuration and built-in diagnostics.
+
+## Does CoreDSC support Folia?
+
+CoreDSC 3.0.1-alpha declares Folia support and routes global, entity, location and asynchronous work through dedicated scheduler adapters. Audited event paths use primitive/immutable snapshots and UUID-based entity-scheduler re-entry. This alpha still requires the published multi-region runtime matrix before it should be described as production-certified on Folia.
+
+## Where should the bot token go?
+
+Use the `COREDSC_BOT_TOKEN` environment variable. `secrets.yml` is a fallback for hosts that cannot provide environment variables. Never paste a token into screenshots, logs, issue reports or startup arguments visible to other panel users.
+
+## Why are slash commands missing?
+
+Use guild registration while setting up the bot and check that the guild ID is correct. If CoreDSC cannot find that guild, it stops command registration instead of switching to global commands. Check `/coredsc doctor`, the bot invite scopes and the bot's permissions.
+
+## Why does a disabled module appear in Doctor?
+
+A disabled module should appear as disabled or skipped, not failed. A module marked `FAILED` was enabled but could not start. The Doctor output includes its last recorded failure.
+
+## Does the Python module require Python on every server?
+
+No. It is disabled by default and does not start automatically unless `auto-start` is enabled or an administrator runs `/coredsc bot start`.
+
+## Can CoreDSC update Discord after a server crash?
+
+No plugin can execute shutdown code after the Java process is killed, the host loses power or the network disappears. Status channels can publish an offline name during a clean stop. Use an external monitor for crash-aware status.
+
+## What does CoreDSC send to bStats?
+
+Fixed categories and bounded counts such as enabled modules, storage type and aggregate successful feature activity. It does not send message text, tokens, IDs, server addresses or linked-account identities. See [Privacy and bStats](privacy).
+
+## Can I reload the plugin?
+
+`/coredsc reload` reloads CoreDSC configuration and modules with rollback protection. A full restart is still the safer choice after changing dependencies, replacing the JAR, changing the token source, or performing a version upgrade.

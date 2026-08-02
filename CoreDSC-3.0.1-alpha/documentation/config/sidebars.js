@@ -1,0 +1,110 @@
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const repositoryUrl = process.env.DOCS_REPOSITORY_URL || '';
+
+const sidebars = {
+  mainSidebar: [
+    {type: 'doc', label: 'Home', id: 'index'},
+    {type: 'doc', label: 'Frequently Asked Questions', id: 'faq'},
+    {
+      type: 'category', label: 'Installation', collapsed: false,
+      link: {type: 'doc', id: 'installation/index'},
+      items: [
+        {type: 'doc', label: 'Initial setup', id: 'installation/initial-setup'},
+        {type: 'doc', label: 'Discord bot', id: 'installation/discord-bot'},
+        {type: 'doc', label: 'First chat bridge', id: 'installation/chat-bridge'},
+        {type: 'doc', label: 'Verify the installation', id: 'installation/verify'},
+        {type: 'doc', label: 'Upgrade CoreDSC', id: 'installation/upgrade'},
+        {type: 'doc', label: 'Migrate from DiscordSRV', id: 'installation/discordsrv-migration'},
+      ],
+    },
+    {
+      type: 'category', label: 'Configuration', collapsed: false,
+      link: {type: 'doc', id: 'configuration/index'},
+      items: [
+        {type: 'doc', label: 'config.yml', id: 'configuration/config'},
+        {type: 'doc', label: 'messages.yml', id: 'configuration/messages'},
+        {type: 'doc', label: 'secrets.yml', id: 'configuration/secrets'},
+        {type: 'doc', label: 'telemetry.yml', id: 'configuration/telemetry'},
+        {type: 'doc', label: 'Module overview', id: 'configuration/modules'},
+        {
+          type: 'category', label: 'Module configuration', collapsed: true,
+          items: [
+            {type: 'doc', label: 'chat-sync.yml', id: 'configuration/modules/chat-sync'},
+            {type: 'doc', label: 'link.yml', id: 'configuration/modules/link'},
+            {type: 'doc', label: 'delivery-queue.yml', id: 'configuration/modules/delivery-queue'},
+            {type: 'doc', label: 'status-channels.yml', id: 'configuration/modules/status-channels'},
+            {type: 'doc', label: 'server-events.yml', id: 'configuration/modules/server-events'},
+            {type: 'doc', label: 'link-rewards.yml', id: 'configuration/modules/link-rewards'},
+            {type: 'doc', label: 'luckperms-sync.yml', id: 'configuration/modules/luckperms-sync'},
+            {type: 'doc', label: 'nickname-sync.yml', id: 'configuration/modules/nickname-sync'},
+            {type: 'doc', label: 'ban-sync.yml', id: 'configuration/modules/ban-sync'},
+            {type: 'doc', label: 'booster-rewards.yml', id: 'configuration/modules/booster-rewards'},
+            {type: 'doc', label: 'console.yml', id: 'configuration/modules/console'},
+            {type: 'doc', label: 'tickets.yml', id: 'configuration/modules/tickets'},
+            {type: 'doc', label: 'reports.yml', id: 'configuration/modules/reports'},
+            {type: 'doc', label: 'cases.yml', id: 'configuration/modules/cases'},
+            {type: 'doc', label: 'applications.yml', id: 'configuration/modules/applications'},
+            {type: 'doc', label: 'custom-commands.yml', id: 'configuration/modules/custom-commands'},
+            {type: 'doc', label: 'workflows.yml', id: 'configuration/modules/workflows'},
+            {type: 'doc', label: 'moderation-bridge.yml', id: 'configuration/modules/moderation-bridge'},
+            {type: 'doc', label: 'network.yml', id: 'configuration/modules/network'},
+            {type: 'doc', label: 'authme.yml', id: 'configuration/modules/authme'},
+            {type: 'doc', label: 'placeholderapi.yml', id: 'configuration/modules/placeholderapi'},
+            {type: 'doc', label: 'voicechat-sync.yml', id: 'configuration/modules/voicechat-sync'},
+            {type: 'doc', label: 'economy-market.yml', id: 'configuration/modules/economy-market'},
+            {type: 'doc', label: 'lore-sync.yml', id: 'configuration/modules/lore-sync'},
+            {type: 'doc', label: 'competitive.yml', id: 'configuration/modules/competitive'},
+            {type: 'doc', label: 'web-editor.yml', id: 'configuration/modules/web-editor'},
+          ],
+        },
+        {type: 'doc', label: 'bot/config.yml', id: 'configuration/bot-config'},
+        {type: 'doc', label: 'guis/report-gui.yml', id: 'configuration/report-gui'},
+      ],
+    },
+    {
+      type: 'category', label: 'Features', collapsed: false,
+      items: [
+        {type: 'doc', label: 'Chat bridge', id: 'features/chat'},
+        {type: 'doc', label: 'Account linking', id: 'features/linking'},
+        {type: 'doc', label: 'Roles, nicknames and bans', id: 'features/synchronization'},
+        {type: 'doc', label: 'Events and status channels', id: 'features/events-status'},
+        {type: 'doc', label: 'Tickets, reports and applications', id: 'features/community'},
+        {type: 'doc', label: 'Custom commands and workflows', id: 'features/automation'},
+        {type: 'doc', label: 'Discord console', id: 'features/console'},
+        {type: 'doc', label: 'Network and delivery queue', id: 'features/network-queue'},
+        {type: 'doc', label: 'Python worker', id: 'features/python'},
+        {type: 'doc', label: 'Voice rooms', id: 'features/voice'},
+        {type: 'doc', label: 'Economy, lore and ELO', id: 'features/gameplay'},
+        {type: 'doc', label: 'WebEditor', id: 'features/web-editor'},
+      ],
+    },
+    {type: 'doc', label: 'Commands', id: 'commands'},
+    {type: 'doc', label: 'Permissions', id: 'permissions'},
+    {type: 'doc', label: 'Placeholders', id: 'placeholders'},
+    {
+      type: 'category', label: 'Administration', collapsed: false,
+      items: [
+        {type: 'doc', label: 'Troubleshooting', id: 'troubleshooting'},
+        {type: 'doc', label: 'Security', id: 'security'},
+        {type: 'doc', label: 'Privacy and bStats', id: 'privacy'},
+      ],
+    },
+    {
+      type: 'category', label: 'Developers', collapsed: true,
+      items: [
+        {type: 'doc', label: 'Architecture and Folia', id: 'developer/architecture'},
+        {type: 'doc', label: 'Java API', id: 'developer/api'},
+        {type: 'doc', label: 'Contributing', id: 'developer/contributing'},
+      ],
+    },
+    {type: 'doc', label: 'Changelog', id: 'changelog'},
+    ...(repositoryUrl ? [{
+      type: 'category', label: 'Support', collapsed: false,
+      items: [
+        {type: 'link', label: 'Report a bug', href: `${repositoryUrl}/issues`},
+        {type: 'link', label: 'Request a feature', href: `${repositoryUrl}/issues`},
+      ],
+    }] : []),
+  ],
+};
+export default sidebars;

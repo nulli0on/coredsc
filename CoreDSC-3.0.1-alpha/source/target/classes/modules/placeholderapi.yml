@@ -1,0 +1,6 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+# CoreDSC module: placeholderapi
+# Set enabled to false to keep this module completely inactive.
+enabled: true

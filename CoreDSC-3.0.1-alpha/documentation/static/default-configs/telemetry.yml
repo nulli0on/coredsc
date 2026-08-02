@@ -1,0 +1,10 @@
+# CoreDSC privacy-safe product analytics.
+# Only official bStats is used. No private endpoint exists.
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+bstats:
+  # CoreDSC-specific switch. The server-wide bStats switch is still respected.
+  enabled: true
+  # Bounded anonymous counts for successful feature activity between submissions.
+  feature-activity: true
