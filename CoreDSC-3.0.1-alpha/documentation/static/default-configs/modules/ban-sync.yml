@@ -1,0 +1,9 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+# Initial linked-account ban synchronization. Review permissions before enabling.
+enabled: false
+guild-id: '' # falls back to discord.guild-id
+poll-interval-ticks: 1200
+minecraft-ban-reason: 'Discord ban synchronized by CoreDSC'
+discord-ban-reason: 'Minecraft ban synchronized by CoreDSC'

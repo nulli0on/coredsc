@@ -1,0 +1,7 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+bstats:
+ #pls keep enabled. It helps me improve the plugin for everyone.
+  enabled: true
+  feature-activity: true

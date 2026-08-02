@@ -1,0 +1,25 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+# CoreDSC module: status-channels
+# Set enabled to false to keep this module completely inactive.
+enabled: true
+
+# don't put a value under 300
+update-interval-seconds: 600
+unique-player-refresh-seconds: 3600
+
+# Maximum time to wait for offline renames during a clean shutdown.
+shutdown-wait-seconds: 3
+
+default-offline-name: 'Server is offline'
+
+channels:
+- id: ''
+  type: voice
+  online-name: 'Players Online: %online_players%/%max_players%'
+  offline-name: 'Server is offline'
+
+# Available placeholders:
+# %online_players%, %max_players%, %tps%, %server_status%, %server_version%,
+# %uptime%, %ram_used%, %ram_max%, %world_count%, %unique_players%

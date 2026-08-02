@@ -1,0 +1,32 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+enabled: false
+
+privacy:
+  require-linked-account: true
+  responses-ephemeral: true
+  expose-item-lore: false
+  maximum-inventory-lines: 35
+  # When enabled, Discord members with Manage Server may inspect a named
+  # player's balance/inventory. Leave false on survival and economy servers.
+  allow-staff-player-lookup: false
+
+commands:
+  balance: balance
+  inventory: inventory
+  market: market
+  cooldown-seconds: 3
+
+market:
+  source: CONFIG
+  page-size: 8
+  title: '%server_name% Market'
+  listings:
+    - id: starter-food
+      name: Starter Food Bundle
+      description: 16 cooked beef for new adventures.
+      price: 125.0
+      currency: coins
+      icon-url: ''
+      purchase-hint: 'Use /shop in game'

@@ -1,0 +1,15 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+enabled: false
+bind-address: "127.0.0.1"
+port: 8765
+
+session:
+  default-minutes: 15
+  maximum-minutes: 30
+  maximum-failed-auth-attempts-per-minute: 30
+
+editor:
+  # Per-file UTF-8 request/read limit. Allowed range: 65536-2097152 bytes.
+  maximum-file-bytes: 1048576

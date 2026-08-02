@@ -1,0 +1,27 @@
+config-version: 5
+generated-by-version: "3.0.1-alpha"
+
+# I actually have no idea what I've made here
+enabled: false
+default-channel-id: ''
+webhooks:
+  auto-create: true
+  fallback-to-bot: true
+  name-prefix: 'CoreDSC NPC'
+security:
+  permission: coredsc.lore.trigger
+  cooldown-seconds: 2
+  maximum-message-length: 1500
+  allow-console: true
+profiles:
+  - id: herald
+    enabled: true
+    channel-id: ''
+    display-name: The Herald
+    avatar-url: ''
+    color: '#9B59B6'
+    title: 'A proclamation echoes across %server_name%'
+    description: '%message%'
+    thumbnail-url: ''
+    image-url: ''
+    footer: 'Triggered by %actor%'
