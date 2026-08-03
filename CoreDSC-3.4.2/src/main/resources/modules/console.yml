@@ -1,0 +1,58 @@
+config-version: 6
+generated-by-version: "3.4.1"
+
+# Classified incident feed and tightly controlled remote command execution.
+enabled: false
+# Required for remote execution; falls back to discord.guild-id.
+guild-id: ''
+channel-id: ''
+feed:
+  enabled: true
+  batch-interval-ticks: 40
+  maximum-lines-per-batch: 40
+  maximum-queued-lines: 500
+  levels: [INFO, WARNING, SEVERE]
+  include-patterns: []
+  exclude-patterns:
+    - '\[Console\]'
+  redact-patterns:
+    - '(?i)(token|password|secret|authorization)(\s*[:=]\s*)\S+'
+    - '(?i)[A-Za-z0-9_-]{24,}\.[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{20,}'
+smart-console:
+  # INFO is suppressed unless it matches an alert keyword. Warnings and severe
+  # records become compact diagnostic embeds instead of an unreadable log dump.
+  include-informational: false
+  include-stacktrace-lines: 8
+  deduplicate-window-seconds: 120
+  notification-cooldown-seconds: 300
+  developer-role-ids: []
+  # These patterns both bypass INFO suppression and notify developer roles.
+  alert-keywords:
+    - '(?i)outofmemoryerror|unable to create native thread'
+    - '(?i)watchdog|server thread.*(?:hung|stalled)|a single server tick took'
+    - '(?i)(?:server|proxy).*(?:crashed|stopping due to|emergency stop)'
+  spam-patterns:
+    - '(?i)^\[INFO\].*(?:joined|left) the game$'
+    - '(?i)^\[INFO\].*moved too quickly'
+    - '(?i)^\[INFO\].*can.t keep up'
+remote:
+  # OFF, ALLOWLIST or FULL. FULL still enforces every deny pattern.
+  mode: 'OFF'
+  prefix: '!console '
+  role-ids: []
+  cooldown-seconds: 3
+  maximum-command-length: 256
+  maximum-commands-per-minute: 20
+  audit-retention-days: 90
+  # Mandatory acknowledgement before FULL mode is accepted. FULL remains high risk.
+  confirm-full-access: false
+  allowlisted-commands:
+    - list
+    - say
+    - whitelist
+  deny-patterns:
+    - '(?i)^\s*(minecraft:)?(stop|restart|reload)\b'
+    - '(?i)^\s*(op|deop|promote|demote)\b'
+    - '(?i)^\s*(plugman|plugins?)\b'
+    - '(?i)(?:^|\s)/?(?:[a-z0-9_.-]+:)?coredsc\s+(reload|setup|migrate|webeditor)\b'
+    - '(?i)(token|password|secret)'

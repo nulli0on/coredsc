@@ -1,0 +1,74 @@
+config-version: 6
+generated-by-version: "3.4.1"
+
+# CoreDSC module: moderation-bridge
+# Set enabled to false to keep this module completely inactive.
+enabled: false
+channel-id: ''
+use-delivery-queue: true
+max-messages-per-minute: 30
+include-raw-command: false
+observe-cancelled-player-commands: true
+sources:
+  player: true
+  console: true
+kick-events:
+  enabled: false
+  format: '⚠️ **%target%** was kicked by **%executor%**: %reason%'
+command-rules:
+- enabled: true
+  action: BAN
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?ban\s+(?<target>\S+)(?:\s+(?<reason>.+))?$
+  format: '🔨 **%executor%** issued `BAN` for **%target%**: %reason%'
+- enabled: true
+  action: TEMPBAN
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?tempban\s+(?<target>\S+)\s+(?<duration>\S+)(?:\s+(?<reason>.+))?$
+  format: '⏳ **%executor%** issued `TEMPBAN` for **%target%** (`%duration%`): %reason%'
+- enabled: true
+  action: MUTE
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?mute\s+(?<target>\S+)(?:\s+(?<reason>.+))?$
+  format: '🔇 **%executor%** issued `MUTE` for **%target%**: %reason%'
+- enabled: true
+  action: TEMPMUTE
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?tempmute\s+(?<target>\S+)\s+(?<duration>\S+)(?:\s+(?<reason>.+))?$
+  format: '⏳ **%executor%** issued `TEMPMUTE` for **%target%** (`%duration%`): %reason%'
+- enabled: true
+  action: UNBAN
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?(?:unban|pardon)\s+(?<target>\S+)$
+  format: ✅ **%executor%** issued `UNBAN` for **%target%**.
+- enabled: true
+  action: UNMUTE
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?unmute\s+(?<target>\S+)$
+  format: ✅ **%executor%** issued `UNMUTE` for **%target%**.
+- enabled: true
+  action: KICK
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?kick\s+(?<target>\S+)(?:\s+(?<reason>.+))?$
+  format: '👢 **%executor%** issued `KICK` for **%target%**: %reason%'
+- enabled: true
+  action: WARN
+  sources:
+  - player
+  - console
+  pattern: ^(?:[a-z0-9_-]+:)?warn\s+(?<target>\S+)(?:\s+(?<reason>.+))?$
+  format: '⚠️ **%executor%** issued `WARN` for **%target%**: %reason%'

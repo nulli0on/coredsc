@@ -1,0 +1,7 @@
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/cloud/CloudIdentityTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/cloud/CloudMediaStoreTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/cloud/CloudProtocolLimitsTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/cloud/CloudRequestFingerprintTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/cloud/CloudTextFrameAssemblerTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/competitive/EloCalculatorTest.java
+/workspaces/coredsc/CoreDSC-3.4.2/src/test/java/com/hubertstudios/coredsc/scripting/MiniJsonTest.java

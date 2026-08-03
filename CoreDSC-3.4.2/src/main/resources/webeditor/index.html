@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>CoreDSC Control Center</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">C</div>
+        <div>
+          <p class="eyebrow">CoreDSC administration</p>
+          <h1>Control Center</h1>
+        </div>
+      </div>
+      <div class="session-card" aria-live="polite">
+        <span class="session-dot"></span>
+        <div>
+          <strong id="session-state">Connecting</strong>
+          <small id="session-expiry">Checking the guarded session…</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="security-banner">
+      <strong>Local control plane</strong>
+      <span>Capability protected · <code>secrets.yml</code> excluded · optimistic locking · automatic backups</span>
+    </div>
+
+    <nav class="tabs" aria-label="Editor sections">
+      <button class="tab active" type="button" data-view="modules">Modules</button>
+      <button class="tab" type="button" data-view="channels">Channel mapping</button>
+      <button class="tab" type="button" data-view="embeds">Embed builder</button>
+      <button class="tab" type="button" data-view="advanced">Advanced YAML</button>
+    </nav>
+
+    <main>
+      <section class="view active" data-panel="modules">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Runtime building blocks</p>
+            <h2>Module dashboard</h2>
+            <p>Enable only what your community uses. Changes are validated together before any file is written.</p>
+          </div>
+          <label class="search-box">
+            <span>Search</span>
+            <input id="module-search" type="search" placeholder="Chat, economy, moderation…" autocomplete="off">
+          </label>
+        </div>
+        <div class="summary-grid" id="summary-grid"></div>
+        <div class="module-groups" id="module-groups"></div>
+      </section>
+
+      <section class="view" data-panel="channels" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">No more snowflake copy/paste</p>
+            <h2>One-click channel mapping</h2>
+            <p>Channels are read from the connected bot. Unusable text channels are clearly marked.</p>
+          </div>
+          <label class="field compact">
+            <span>Discord server</span>
+            <select id="guild-select"></select>
+          </label>
+        </div>
+        <div id="discord-offline" class="empty-state" hidden>
+          <strong>Discord is not ready</strong>
+          <p>Start the bot and confirm that it can see the configured server, then open a new editor session.</p>
+        </div>
+        <div id="mapping-grid" class="mapping-grid"></div>
+      </section>
+
+      <section class="view" data-panel="embeds" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Discord-accurate composition</p>
+            <h2>Visual embed builder</h2>
+            <p>Edit lifecycle messages and preview placeholders, colors, thumbnails and images before saving.</p>
+          </div>
+          <label class="field compact">
+            <span>Event</span>
+            <select id="embed-event"></select>
+          </label>
+        </div>
+
+        <div class="embed-workspace">
+          <form id="embed-form" class="form-card" autocomplete="off">
+            <label class="switch-row">
+              <span><strong>Send this event</strong><small>Disable without deleting its design.</small></span>
+              <input id="embed-enabled" type="checkbox" role="switch">
+            </label>
+            <label class="field">
+              <span>Title</span>
+              <input id="embed-title" maxlength="256" placeholder="Player joined">
+            </label>
+            <label class="field">
+              <span>Description</span>
+              <textarea id="embed-description" rows="5" maxlength="4096" placeholder="%player% joined the server."></textarea>
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span>Accent color</span>
+                <span class="color-control">
+                  <input id="embed-color-picker" type="color" value="#5865f2">
+                  <input id="embed-color" maxlength="7" pattern="#[0-9A-Fa-f]{6}" value="#5865F2">
+                </span>
+              </label>
+              <label class="field">
+                <span>Footer</span>
+                <input id="embed-footer" maxlength="2048" placeholder="CoreDSC">
+              </label>
+            </div>
+            <div class="palette" aria-label="Color palette">
+              <span>Drag a color onto the preview</span>
+              <button type="button" draggable="true" data-color="#5865F2" aria-label="Blurple"></button>
+              <button type="button" draggable="true" data-color="#57F287" aria-label="Green"></button>
+              <button type="button" draggable="true" data-color="#FEE75C" aria-label="Yellow"></button>
+              <button type="button" draggable="true" data-color="#EB459E" aria-label="Fuchsia"></button>
+              <button type="button" draggable="true" data-color="#ED4245" aria-label="Red"></button>
+            </div>
+            <label class="field">
+              <span>Thumbnail URL <small>HTTPS only</small></span>
+              <input id="embed-thumbnail" type="url" maxlength="2048" placeholder="https://…">
+            </label>
+            <label class="field">
+              <span>Large image URL <small>HTTPS only</small></span>
+              <input id="embed-image" type="url" maxlength="2048" placeholder="https://…">
+            </label>
+            <details>
+              <summary>Available placeholders</summary>
+              <p class="placeholder-list"><code>%server_name%</code> <code>%player%</code> <code>%death_message%</code> <code>%online_players%</code> <code>%max_players%</code> <code>%uptime%</code></p>
+            </details>
+          </form>
+
+          <div class="preview-column">
+            <p class="eyebrow">Live Discord preview</p>
+            <div class="discord-message">
+              <div class="bot-avatar">C</div>
+              <div class="message-body">
+                <div class="message-meta"><strong>CoreDSC</strong><span class="bot-tag">APP</span><time>Today at 22:41</time></div>
+                <article id="embed-preview" class="discord-embed" tabindex="0">
+                  <div class="embed-copy">
+                    <strong id="preview-title"></strong>
+                    <p id="preview-description"></p>
+                    <img id="preview-image" class="preview-image" alt="Embed image preview" hidden>
+                    <small id="preview-footer"></small>
+                  </div>
+                  <img id="preview-thumbnail" class="preview-thumbnail" alt="Embed thumbnail preview" hidden>
+                </article>
+              </div>
+            </div>
+            <p class="preview-note">Drop a palette color on the card. Remote images are loaded only from HTTPS URLs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view advanced-view" data-panel="advanced" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Full control</p>
+            <h2>Advanced YAML</h2>
+            <p>For settings not yet represented visually. The same validation, backup and conflict protection applies.</p>
+          </div>
+        </div>
+        <div class="yaml-workspace">
+          <aside class="file-sidebar" aria-label="Configuration files">
+            <div class="sidebar-heading"><strong>Files</strong><span id="file-count">0</span></div>
+            <nav id="file-list"></nav>
+          </aside>
+          <section class="editor-panel">
+            <div class="editor-heading">
+              <div><p class="eyebrow">Editing</p><h3 id="active-file">Select a file</h3></div>
+              <div class="actions">
+                <button id="reload-button" class="secondary" type="button" disabled>Reload</button>
+                <button id="validate-button" class="secondary" type="button" disabled>Validate</button>
+                <button id="raw-save-button" class="primary" type="button" disabled>Save file</button>
+              </div>
+            </div>
+            <textarea id="editor" aria-label="YAML configuration editor" autocomplete="off" autocapitalize="off" spellcheck="false" disabled></textarea>
+            <footer class="editor-footer"><span id="document-state">No file loaded</span><span><kbd>Ctrl</kbd> + <kbd>S</kbd> save · <kbd>Ctrl</kbd> + <kbd>Enter</kbd> validate</span></footer>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <section id="result-panel" class="result-panel" aria-live="polite" hidden>
+      <div><strong id="result-title"></strong><p id="result-message"></p></div>
+      <ul id="warning-list"></ul>
+      <button id="dismiss-result" type="button" aria-label="Dismiss message">×</button>
+    </section>
+
+    <footer class="save-bar">
+      <div><strong id="change-count">No visual changes</strong><small id="save-hint">Choose a module, mapping or embed to begin.</small></div>
+      <div class="actions">
+        <button id="discard-button" class="secondary" type="button" disabled>Discard</button>
+        <button id="save-button" class="primary" type="button" disabled>Save visual changes</button>
+        <button id="apply-button" class="success" type="button" disabled>Apply to CoreDSC</button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
